@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #******************************************************************************
 #  Name:     oft-addpct
 #  Purpose:  Application for adding PCT color table in an image
@@ -15,9 +15,9 @@ import os.path
 version=0.1
 def Usage():
     
-    print 'Add pseudo color table to an image'
-    print 'Version',version
-    print 'Usage: oft-addpct.py <input.img> <output.img>'
+    print('Add pseudo color table to an image')
+    print('Version',version)
+    print('Usage: oft-addpct.py <input.img> <output.img>')
     sys.exit(1)
 
 # =============================================================================
@@ -33,7 +33,7 @@ dst_filename = 'None'
 gdal.AllRegister()
 argv = gdal.GeneralCmdLineProcessor( sys.argv )
 
-if len(sys.argv) <> 3:
+if len(sys.argv) != 3:
     Usage()
     sys.exit( 0 )
 
@@ -66,12 +66,12 @@ while i < len(argv) :
 src_ds = gdal.Open( src_filename)
 
 if src_ds is None:
-    print 'Unable to open ', src_filename
+    print('Unable to open ', src_filename)
     sys.exit(1)
 
 if src_ds.RasterCount != 1:
-    print 'Input has %d bands. Only 1 band input supported.' \
-          % src_ds.RasterCount
+    print('Input has %d bands. Only 1 band input supported.' \
+          % src_ds.RasterCount)
     sys.exit(1)
 
 
@@ -80,7 +80,7 @@ if src_ds.RasterCount != 1:
 
 dst_driver = gdal.GetDriverByName(format)
 if dst_driver is None:
-    print '"%s" driver not registered.' % format
+    print('"%s" driver not registered.' % format)
     sys.exit(1)
 
 in_band =src_ds.GetRasterBand(1)
@@ -89,12 +89,12 @@ in_band =src_ds.GetRasterBand(1)
 
 try:
 
-    filename=raw_input("Give LUT file name: ")
-    print filename
+    filename=input("Give LUT file name: ")
+    print(filename)
     file=open(filename,'r')
 
-except IOError, (errno,strerror):
-    print "Error opening input file"
+except IOError:
+    print("Error opening input file")
     sys.exit(1)
 
 # Generate the median cut PCT
@@ -113,8 +113,8 @@ for line in file:
         stub[i]=int(cols[i])
 
     if len(cols)<4:
-        print 'Input line ',nbrline,'has wrong number of cols'
-        print 'Only 4/5 (RGB[A]) input cols supported. Line ',nbrline,'had ',cols,'cols' 
+        print('Input line ',nbrline,'has wrong number of cols')
+        print('Only 4/5 (RGB[A]) input cols supported. Line ',nbrline,'had ',cols,'cols') 
         sys.exit(1);
     elif len(cols)<5:
         stub[4]=255 

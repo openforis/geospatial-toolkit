@@ -1,1 +1,3 @@
 # geospatial-toolkit
+
+Open Foris Geospatial Toolkit is a collection of command-line utilities for processing of geographical data. It aims to simplify the complex process of transforming raw satellite imagery for automatic image processing to produce valuable information. It is particularly useful for processing big amounts of raster data, and provides a wide range of functionalities including image manipulation, statistics, segmentation and classification. The tools have been tested mainly in Ubuntu Linux environment although can be used with other linux distros, Mac OS, and MS Windows (Cygwin) as well.  Most of the stand-alone programs use GDAL libraries and many of the scripts rely heavily on GDAL command-line utilities.

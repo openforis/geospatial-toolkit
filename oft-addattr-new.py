@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Add an attribute field in a shapefile
 # read the values from a text file
